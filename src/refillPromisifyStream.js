@@ -1,27 +1,26 @@
 'use strict';
 
-var q = require('q');
 var endOfStream = require('end-of-stream');
 var streamConsume = require('stream-consume');
 
 function refillPromisifyStream(stream) {
 
-  var deferred = q.defer();
+  return new Promise(function (resolve, reject) {
 
-  endOfStream(stream, function(error) {
+    endOfStream(stream, function(error) {
 
-    if (error) {
-      deferred.reject(error);
-      return;
-    }
+      if (error) {
+        reject(error);
+        return;
+      }
 
-    deferred.resolve(stream);
+      resolve(stream);
+
+    });
+
+    streamConsume(stream);
 
   });
-
-  streamConsume(stream);
-
-  return deferred.promise;
 
 }
 

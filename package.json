@@ -23,7 +23,6 @@
   },
   "dependencies": {
     "end-of-stream": "1.1.0",
-    "q": "1.4.1",
     "stream-consume": "0.1.0"
   },
   "devDependencies": {
