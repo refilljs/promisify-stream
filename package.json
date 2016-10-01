@@ -1,6 +1,6 @@
 {
   "name": "refill-promisify-stream",
-  "version": "0.5.0",
+  "version": "1.0.0",
   "description": "Change your streams into promises",
   "main": "src/refillPromisifyStream.js",
   "repository": {
