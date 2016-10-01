@@ -2,14 +2,14 @@
 
 var proxyquire = require('proxyquire');
 
-describe('utils/promisify', function() {
+describe('refillPromisifyStream', function() {
 
   beforeEach(function() {
 
     this.stream = {};
     this.endOfStream = jasmine.createSpy('endOfStream');
     this.streamConsume = jasmine.createSpy('streamConsume');
-    this.promisify = proxyquire('./promisify', {
+    this.refillPromisifyStream = proxyquire('./refillPromisifyStream', {
       'end-of-stream': this.endOfStream,
       'stream-consume': this.streamConsume
     });
@@ -17,7 +17,7 @@ describe('utils/promisify', function() {
   });
 
   it('should consume stream', function() {
-    this.promisify(this.stream);
+    this.refillPromisifyStream(this.stream);
     expect(this.streamConsume).toHaveBeenCalledWith(this.stream);
   });
 
@@ -25,7 +25,7 @@ describe('utils/promisify', function() {
 
     var that = this;
 
-    this.promisify(this.stream)
+    this.refillPromisifyStream(this.stream)
       .then(function(resolver) {
         expect(resolver).toBe(that.stream);
         next();
@@ -39,7 +39,7 @@ describe('utils/promisify', function() {
 
     var error = 'error message';
 
-    this.promisify(this.stream)
+    this.refillPromisifyStream(this.stream)
       .catch(function(rejecter) {
         expect(rejecter).toBe(error);
         next();

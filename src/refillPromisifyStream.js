@@ -4,7 +4,7 @@ var q = require('q');
 var endOfStream = require('end-of-stream');
 var streamConsume = require('stream-consume');
 
-function promisify(stream) {
+function refillPromisifyStream(stream) {
 
   var deferred = q.defer();
 
@@ -25,4 +25,4 @@ function promisify(stream) {
 
 }
 
-module.exports = promisify;
+module.exports = refillPromisifyStream;
