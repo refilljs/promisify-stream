@@ -28,6 +28,6 @@
   "devDependencies": {
     "gulp": "3.9.1",
     "proxyquire": "1.7.10",
-    "zkflow-node": "1.0.0"
+    "refill-node": "2.0.0"
   }
 }
